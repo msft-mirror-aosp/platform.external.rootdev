@@ -18,13 +18,13 @@ rootdev_CFLAGS := \
   -D_BSD_SOURCE \
   -D_FILE_OFFSET_BITS=64 \
   -D_LARGEFILE_SOURCE \
+  -include sys/sysmacros.h \
   -Wall -Werror -Wno-sign-compare \
 
 # Build the shared library.
 include $(CLEAR_VARS)
 LOCAL_MODULE := librootdev
 LOCAL_CFLAGS += $(rootdev_CFLAGS)
-LOCAL_CLANG := true
 LOCAL_SRC_FILES := rootdev.c
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 include $(BUILD_SHARED_LIBRARY)
@@ -33,7 +33,6 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 LOCAL_MODULE := rootdev
 LOCAL_CFLAGS += $(rootdev_CFLAGS)
-LOCAL_CLANG := true
 LOCAL_SHARED_LIBRARIES := librootdev
 LOCAL_SRC_FILES := main.c
 include $(BUILD_EXECUTABLE)
