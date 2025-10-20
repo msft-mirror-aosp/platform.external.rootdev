@@ -43,4 +43,5 @@ cc_binary {
         "main.c",
         "rootdev.c",
     ],
+    vendor: true,
 }
